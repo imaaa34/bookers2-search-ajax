@@ -14,8 +14,15 @@ class SearchController < ApplicationController
   end
   
   def date_search
-    date = params[:date_search]
-    @books = Book.where(created_at: date.in_time_zone.all_day)
+    if params[:date_search] == ""
+      @books = "日付を選択してください"
+    else
+      date = params[:date_search]
+      @books = Book.where(created_at: date.in_time_zone.all_day).count
+      # 以下解答例
+      # create_at = params[:created_at]
+      # @books = Book.where(['created_at LIKE ? ', "#{create_at}%"]).count
+    end
   end
   
 
