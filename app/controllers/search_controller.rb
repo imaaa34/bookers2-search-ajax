@@ -12,5 +12,11 @@ class SearchController < ApplicationController
       @books = Book.looks(search, @word)
     end
   end
+  
+  def date_search
+    date = params[:date_search]
+    @books = Book.where(created_at: date.in_time_zone.all_day)
+  end
+  
 
 end
