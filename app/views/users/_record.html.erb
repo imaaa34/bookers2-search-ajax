@@ -1,0 +1,39 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>今日の投稿数</th>
+      <th>前日の投稿数</th>
+      <th>前日比</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @today_book %></td>
+      <td><%= @yesterday_book %></td>
+      <% if @yesterday_book == 0 %>
+      <td>Error</td>
+      <% else %>
+      <td><%= (@today_book.quo(@yesterday_book) * 100).round %>%</td>
+      <% end %>
+    </tr>
+  </tbody>
+
+    <thead>
+    <tr>
+      <th>今週の投稿数</th>
+      <th>前週の投稿数</th>
+      <th>前週比</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @this_week_book %></td>
+      <td><%= @last_week_book %></td>
+      <% if @last_week_book == 0 %>
+      <td>Error</td>
+      <% else %>
+      <td><%= (@this_week_book.quo(@last_week_book) * 100).round %>%</td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
